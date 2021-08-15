@@ -17,15 +17,15 @@
         :z-index="9"
         fixed />
     </template>
-    <div 
+    <div
       v-else
       class="movie-details">
-      <div 
+      <div
         :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})` }"
         class="poster">
         <Loader
           v-if="imageLoading"
-          absolute />  
+          absolute />
       </div>
       <div class="specs">
         <div class="title">
@@ -77,7 +77,6 @@ export default {
   components: {
     Loader
   },
-  // this.$route.params
   async asyncData({ store, params }) {
     await store.dispatch('movie/searchMovieWithId', {
       id: params.id
@@ -93,13 +92,14 @@ export default {
     ])
   },
   methods: {
-    requestDiffSizeImage(url) {
+    requestDiffSizeImage (url) {
       if (!url || url === 'N/A') {
         this.imageLoading = false
         return ''
       }
       const src = url.replace('SX300', 'SX700')
       this.$loadImage(src).then(() => {
+        console.log('then:', src, this.imageLoading)
         this.imageLoading = false
       })
       return src
@@ -126,7 +126,7 @@ export default {
   .poster {
     flex-shrink: 0;
     width: 500px;
-    height: 500px * 3/2;
+    height: 500px * (3 / 2);
     margin-right: 70px;
   }
   .specs {
@@ -161,7 +161,7 @@ export default {
   color: $gray-600;
   .poster {
     width: 500px;
-    height: 500px * 3/2;
+    height: 500px * (3 / 2);
     margin-right: 70px;
     border-radius: 10px;
     background-color: $gray-200;
@@ -217,4 +217,4 @@ export default {
     }
   }
 }
-</style>2
+</style>

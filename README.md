@@ -1,4 +1,5 @@
 # movie-app-nuxt
+https://krungy-movie-app-nuxt.herokuapp.com/
 
 ## Build Setup
 
